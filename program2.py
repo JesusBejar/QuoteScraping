@@ -31,3 +31,9 @@ while url:
     next_btn = soup.find(_class='next')
     url = next_btn.find("a")["href"] if next_btn else None
     sleep(2)
+
+    book = choice(all_books)
+    print("Here is some book info: ")
+    print(book["title"])
+    print(book["stock"])
+    print(book["price_color"])
