@@ -20,3 +20,14 @@ while url:
     soup = BeautifulSoup(res.text, 'html.parser')
 
     # class name found in html page
+    books_on_page = soup.find_all(class_='product_pod')
+
+    for book in books_on_page:
+        all_books.append({
+			'title': book.find(title_='').get_text(),
+            'stock': book.find(class_='instock availability').get_text(),
+			'price': book.find(class_='price_color').get_text()
+        })
+    next_btn = soup.find(_class='next')
+    url = next_btn.find("a")["href"] if next_btn else None
+    sleep(2)
