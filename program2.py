@@ -42,4 +42,21 @@ while url:
                 "availability": availability
             })
 
+    next_btn = soup.find(_class='next')
+    url = next_btn.find("a")["href"] if next_btn else None
+    sleep(2)
 
+    print("Here is some info about a certain book: ")
+    book = choice(all_books)
+    print(book)
+
+    # try:
+    #     stock_status = soup.find("p", class_="instock availability").get_text()
+    #     print("stock info found")
+    # except KeyError:
+    #     stock_status = "Stock information not available"
+    #     print(stock_status)
+
+    print(book["title"])
+    print(book["price"])
+    print(book["availability"])
